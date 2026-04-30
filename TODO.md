@@ -63,3 +63,36 @@
 ## 마무리
 - [x] docs/strategy-comparison.md 작성
 - [x] README.md 작성
+
+---
+
+# Phase 2 로드맵 (숙소 검색 — 읽기 최적화 / 캐싱)
+
+## Step 1: Baseline (DB만, 캐시 없음)
+
+### 도메인/구현
+- [x] 도메인 모델 설계 (Hotel/Room/RoomInventory/Review/Reservation)
+- [x] 동시성 전략 결정 (CAS 기반 낙관적 락 — `UPDATE WHERE used < max`)
+- [x] 검색 API 시그니처 (`GET /api/v1/search/hotels`)
+- [x] 엔티티 5개 작성 (인덱스 어노테이션 포함)
+- [x] Repository 5개 작성 (RoomInventory에 CAS decrement 메서드)
+- [x] AccommodationSeeder (`@Profile("seed")`, JDBC Batch Insert, 의도적 분포)
+- [x] SearchController + SearchService(NamedParameterJdbcTemplate) + DTO
+- [x] 통합 테스트 9개 (정상/필터/정렬/매진/빈결과/잘못된입력)
+- [x] k6 search-baseline.js (정상/Hot Key 모드)
+- [x] Grafana 대시보드 (accommodation.json)
+
+### 측정
+- [x] 본 규모 시드 실행 (호텔 1만 / 1,800만 row) — `rewriteBatchedStatements=true`로 9.5분
+- [x] EXPLAIN으로 인덱스 효과 검증 → LATERAL JOIN + 커버링 인덱스 적용 (5.3초 → 1.7초)
+- [ ] k6 부하 테스트 (MODE=normal) — 보류, Step 2 캐싱 비교 시 함께 측정
+- [ ] k6 부하 테스트 (MODE=hotkey) — 보류
+- [x] Step 2 진입 동기 도출 — 쿼리 튜닝 한계 1.7초 (count 포함 ~3초), 캐싱 필요
+- [x] `docs/accommodation/step1-baseline.md` 작성
+
+## Step 2 이후 (Step 1 측정 결과 후 별도 plan)
+- [ ] Step 2: 응답 통째로 Cache-Aside
+- [ ] Step 3: Read Model 분리 (다단 캐싱)
+- [ ] Step 4: Hot Key 분산
+- [ ] Step 5: 이벤트 기반 무효화
+- [ ] Step 6: Stampede / Penetration 방어
