@@ -2,7 +2,7 @@ spring:
   application:
     name: coupon-rush
   datasource:
-    url: jdbc:mysql://localhost:13306/coupon_rush?useSSL=false&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://localhost:13306/coupon_rush?useSSL=false&allowPublicKeyRetrieval=true&rewriteBatchedStatements=true
     username: coupon
     password: coupon
     driver-class-name: com.mysql.cj.jdbc.Driver
