@@ -7,7 +7,7 @@ variable "aws_region" {
 variable "project_name" {
   description = "프로젝트 이름 (리소스 태깅용)"
   type        = string
-  default     = "coupon-rush"
+  default     = "booking-rush"
 }
 
 variable "db_username" {

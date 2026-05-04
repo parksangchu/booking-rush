@@ -1,6 +1,6 @@
 spring:
   application:
-    name: coupon-rush
+    name: booking-rush
   datasource:
     url: jdbc:mysql://localhost:13306/coupon_rush?useSSL=false&allowPublicKeyRetrieval=true&rewriteBatchedStatements=true
     username: coupon
@@ -38,7 +38,7 @@ management:
         include: health,prometheus,info
   metrics:
     tags:
-      application: coupon-rush
+      application: booking-rush
 
 coupon:
   strategy: pessimistic

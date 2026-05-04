@@ -1,6 +1,11 @@
-# Coupon Rush
+# Booking Rush
 
-선착순 쿠폰 발급 시스템. 6가지 동시성 전략을 단계별로 구현하고, k6 부하 테스트로 비교한다.
+숙박 예약 플랫폼. 트래픽 스파이크에 대응하는 두 축을 단계별로 구현·측정한다.
+
+- **Phase 1 — 쓰기 최적화 (쿠폰 발급)**: 동시성 전략 6가지 비교 (`docs/coupon/`)
+- **Phase 2 — 읽기 최적화 (숙소 검색 캐싱)**: 캐싱 단계별 도입 (`docs/accommodation/`)
+
+> 프로젝트는 초기 `coupon-rush`(Phase 1)로 시작해 `booking-rush`로 확장됨. Java 패키지 `com.couponrush`는 변경 비용을 피해 그대로 유지.
 
 ## 목적
 
