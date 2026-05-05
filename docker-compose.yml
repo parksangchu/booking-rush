@@ -1,7 +1,7 @@
 services:
   mysql:
     image: mysql:8.4
-    container_name: booking-rush-mysql
+    container_name: coupon-rush-mysql
     restart: unless-stopped
     environment:
       MYSQL_ROOT_PASSWORD: root
@@ -25,7 +25,7 @@ services:
 
   redis:
     image: redis:7.4-alpine
-    container_name: booking-rush-redis
+    container_name: coupon-rush-redis
     restart: unless-stopped
     profiles:
       - redis
@@ -39,7 +39,7 @@ services:
 
   kafka:
     image: apache/kafka:3.8.0
-    container_name: booking-rush-kafka
+    container_name: coupon-rush-kafka
     restart: unless-stopped
     profiles:
       - kafka
@@ -66,7 +66,7 @@ services:
 
   prometheus:
     image: prom/prometheus
-    container_name: booking-rush-prometheus
+    container_name: coupon-rush-prometheus
     restart: unless-stopped
     profiles:
       - monitoring
@@ -78,7 +78,7 @@ services:
 
   grafana:
     image: grafana/grafana
-    container_name: booking-rush-grafana
+    container_name: coupon-rush-grafana
     restart: unless-stopped
     profiles:
       - monitoring

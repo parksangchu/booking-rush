@@ -204,12 +204,12 @@
     }
   ],
   "schemaVersion": 39,
-  "tags": ["booking-rush"],
+  "tags": ["coupon-rush"],
   "templating": { "list": [] },
   "time": { "from": "now-5m", "to": "now" },
   "timepicker": { "refresh_intervals": ["5s", "10s", "30s"] },
   "timezone": "Asia/Seoul",
   "title": "Coupon Rush - Load Test",
-  "uid": "booking-rush-load-test",
+  "uid": "coupon-rush-load-test",
   "version": 1
 }
